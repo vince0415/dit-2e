@@ -35,6 +35,9 @@
             </v-avatar>
           </div>
         </template>
+        <template v-slot:item.actions="{ item }">
+          <v-btn color="purple" @click="getCustomerDetails(item)">View</v-btn>
+        </template>
       </v-data-table>
     </v-col>
   </v-row>
@@ -59,6 +62,7 @@ export default {
         { text: "Address", value: "address" },
         { text: "Age", value: "age" },
         { text: "Status", value: "isVip" },
+        { text: "", value:"actions"}
       ],
       customers: [],
       loading: true,
@@ -76,6 +80,10 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+
+    getCustomerDetails(item){
+      console.log(item)
     },
   },
 
